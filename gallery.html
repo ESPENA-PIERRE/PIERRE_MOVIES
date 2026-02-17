@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Pierre Espeña</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(
+                    rgba(220, 235, 245, 0.85),
+                    rgba(220, 235, 245, 0.85)
+                );
+            background-color: #eaf4fb;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 30px 0 0 40px;
+            color: #2d5a7a;
+            text-decoration: underline;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #1a3a4f;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: #2d4a5e;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .post-date {
+            font-size: 14px;
+            color: #4a6f8a;
+            font-style: italic;
+        }
+
+        .category-section {
+            border: 2px solid #b7d7ee;
+            padding: 35px;
+            margin: 0 auto 40px;
+            max-width: 1000px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(150, 190, 220, 0.35);
+        }
+
+        .category-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .category-title h2 {
+            color: #2d4a5e;
+            font-size: 32px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .category-subtitle {
+            font-size: 15px;
+            color: #4a6f8a;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 0 20px;
+        }
+
+        .gallery-grid img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 5px;
+            opacity: 0.5;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Childhood - Warm Orange Shadow */
+        .gallery-grid img:hover.childhood-style {
+            opacity: 1;
+            box-shadow: 10px 10px 20px rgba(255, 165, 0, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Teenage - Purple/Fuchsia Glow */
+        .gallery-grid img:hover.teenage-style {
+            opacity: 1;
+            box-shadow: 0 0 25px 8px rgba(255, 0, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* College - Soft Blue Shadow */
+        .gallery-grid img:hover.college-style {
+            opacity: 1;
+            box-shadow: 10px 10px 25px rgba(100, 150, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            margin: 80px 0 30px;
+            font-size: 13px;
+            color: #4a6f8a;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 12px 30px;
+            background-color: rgba(45, 90, 122, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(45, 90, 122, 0.3);
+        }
+
+        .back-to-top:hover {
+            background-color: #1a3a4f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(45, 90, 122, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Home</a>
+
+<header>
+    <h1>Photo Gallery</h1>
+    <div class="post-date">Memories Through the Years</div>
+</header>
+
+<!-- CHILDHOOD CATEGORY -->
+<div class="category-section">
+    <div class="category-title">
+        <h2>🏠 Childhood Memories</h2>
+        <div class="category-subtitle">Growing Up in our Household</div>
+    </div>
+    <div class="gallery-grid">
+        <a href="childhood1.jpg" target="winImage"><img src="childhood1.jpg" alt="Childhood Memory 1" title="Baby Me" class="childhood-style"/></a>
+        <a href="childhood2.jpg" target="winImage"><img src="childhood2.jpg" alt="Childhood Memory 2" title="Baby IT" class="childhood-style"/></a>
+        <a href="childhood3.jpg" target="winImage"><img src="childhood3.jpg" alt="Childhood Memory 3" title="Happy Me" class="childhood-style"/></a>
+        <a href="childhood4.jpg" target="winImage"><img src="childhood4.jpg" alt="Childhood Memory 4" title="Dimple" class="childhood-style"/></a>
+        <a href="childhood5.jpg" target="winImage"><img src="childhood5.jpg" alt="Childhood Memory 5" title="Sunglasses Me" class="childhood-style"/></a>
+        <a href="childhood6.jpg" target="winImage"><img src="childhood6.jpg" alt="Childhood Memory 6" title="Corn with Sister" class="childhood-style"/></a>
+        <a href="childhood7.jpg" target="winImage"><img src="childhood7.jpg" alt="Childhood Memory 7" title="Flip Phone" class="childhood-style"/></a>
+        <a href="childhood8.jpg" target="winImage"><img src="childhood8.jpg" alt="Childhood Memory 8" title="Ring Bearer" class="childhood-style"/></a>
+        <a href="childhood9.jpg" target="winImage"><img src="childhood9.jpg" alt="Childhood Memory 9" title="Tree Amigos" class="childhood-style"/></a>
+        <a href="childhood10.jpg" target="winImage"><img src="childhood10.jpg" alt="Childhood Memory 10" title="Cow Boy" class="childhood-style"/></a>
+        <a href="childhood11.jpg" target="winImage"><img src="childhood11.jpg" alt="Childhood Memory 11" title="Supa Man" class="childhood-style"/></a>
+        <a href="childhood12.jpg" target="winImage"><img src="childhood12.jpg" alt="Childhood Memory 12" title="I will always love you Mickey" class="childhood-style"/></a>
+        <a href="childhood13.jpg" target="winImage"><img src="childhood13.jpg" alt="Childhood Memory 13" title="Boy Scout" class="childhood-style"/></a>
+        <a href="childhood14.jpg" target="winImage"><img src="childhood14.jpg" alt="Childhood Memory 14" title="Childhood Crush" class="childhood-style"/></a>
+        <a href="childhood15.jpg" target="winImage"><img src="childhood15.jpg" alt="Childhood Memory 15" title="Me and My Kuya" class="childhood-style"/></a>
+        <a href="childhood16.jpg" target="winImage"><img src="childhood16.jpg" alt="Childhood Memory 16" title="Graduation Picture" class="childhood-style"/></a>
+        <a href="childhood17.jpg" target="winImage"><img src="childhood17.jpg" alt="Childhood Memory 17" title="Charles Leclerc?" class="childhood-style"/></a>
+        <a href="childhood18.jpg" target="winImage"><img src="childhood18.jpg" alt="Childhood Memory 18" title="Bungi with Parents" class="childhood-style"/></a>
+        <a href="childhood19.jpg" target="winImage"><img src="childhood19.jpg" alt="Childhood Memory 19" title="Picture with Sister" class="childhood-style"/></a>
+        <a href="childhood20.jpg" target="winImage"><img src="childhood20.jpg" alt="Childhood Memory 20" title="Family Bonding" class="childhood-style"/></a>
+    </div>
+</div>
+
+<!-- TEENAGE YEARS CATEGORY -->
+<div class="category-section">
+    <div class="category-title">
+        <h2>🌱 Teenage Years</h2>
+        <div class="category-subtitle">Growing Up Behind Screens</div>
+    </div>
+    <div class="gallery-grid">
+        <a href="teenage1.jpg" target="winImage"><img src="teenage1.jpg" alt="Teenage Memory 1" title="Do you sea what I see?" class="teenage-style"/></a>
+        <a href="teenage2.jpg" target="winImage"><img src="teenage2.jpg" alt="Teenage Memory 2" title="Me and Sister" class="teenage-style"/></a>
+        <a href="teenage3.jpg" target="winImage"><img src="teenage3.jpg" alt="Teenage Memory 3" title="Nature Trip" class="teenage-style"/></a>
+        <a href="teenage4.jpg" target="winImage"><img src="teenage4.jpg" alt="Teenage Memory 4" title="Me and Papa" class="teenage-style"/></a>
+        <a href="teenage5.jpg" target="winImage"><img src="teenage5.jpg" alt="Teenage Memory 5" title="Hong Kong Spies" class="teenage-style"/></a>
+        <a href="teenage6.jpg" target="winImage"><img src="teenage6.jpg" alt="Teenage Memory 6" title="Family is Love" class="teenage-style"/></a>
+        <a href="teenage7.jpg" target="winImage"><img src="teenage7.jpg" alt="Teenage Memory 7" title="Mueseo Sugbo" class="teenage-style"/></a>
+        <a href="teenage8.jpg" target="winImage"><img src="teenage8.jpg" alt="Teenage Memory 8" title="Sea Sick" class="teenage-style"/></a>
+        <a href="teenage9.jpg" target="winImage"><img src="teenage9.jpg" alt="Teenage Memory 9" title="Scouting Ahead" class="teenage-style"/></a>
+        <a href="teenage10.jpg" target="winImage"><img src="teenage10.jpg" alt="Teenage Memory 10" title="Family Picture" class="teenage-style"/></a>
+        <a href="teenage11.jpg" target="winImage"><img src="teenage11.jpg" alt="Teenage Memory 11" title="Hong Kong Disney" class="teenage-style"/></a>
+        <a href="teenage12.jpg" target="winImage"><img src="teenage12.jpg" alt="Teenage Memory 12" title="Ice Cream Date" class="teenage-style"/></a>
+        <a href="teenage13.jpg" target="winImage"><img src="teenage13.jpg" alt="Teenage Memory 13" title="Archery with Papa" class="teenage-style"/></a>
+        <a href="teenage14.jpg" target="winImage"><img src="teenage14.jpg" alt="Teenage Memory 14" title="Diner with The Gals" class="teenage-style"/></a>
+        <a href="teenage15.jpg" target="winImage"><img src="teenage15.jpg" alt="Teenage Memory 15" title="Escapade" class="teenage-style"/></a>
+        <a href="teenage16.jpg" target="winImage"><img src="teenage16.jpg" alt="Teenage Memory 16" title="Church with Family" class="teenage-style"/></a>
+        <a href="teenage17.jpg" target="winImage"><img src="teenage17.jpg" alt="Teenage Memory 17" title="High-School Assembly" class="teenage-style"/></a>
+        <a href="teenage18.jpg" target="winImage"><img src="teenage18.jpg" alt="Teenage Memory 18" title="Jester Classmate" class="teenage-style"/></a>
+        <a href="teenage19.jpg" target="winImage"><img src="teenage19.jpg" alt="Teenage Memory 19" title="Picture with Grandmama" class="teenage-style"/></a>
+        <a href="teenage20.jpg" target="winImage"><img src="teenage20.jpg" alt="Teenage Memory 20" title="My Knights" class="teenage-style"/></a>
+    </div>
+</div>
+
+<!-- COLLEGE LIFE CATEGORY -->
+<div class="category-section">
+    <div class="category-title">
+        <h2>🎓 College Life</h2>
+        <div class="category-subtitle">Growth and Discovery</div>
+    </div>
+    <div class="gallery-grid">
+        <a href="college1.jpg" target="winImage"><img src="college1.jpg" alt="College Memory 1" title="Charles Leclerc is that you?" class="college-style"/></a>
+        <a href="college2.jpg" target="winImage"><img src="college2.jpg" alt="College Memory 2" title="Pizza Party Exchange" class="college-style"/></a>
+        <a href="college3.jpg" target="winImage"><img src="college3.jpg" alt="College Memory 3" title="Data Base Management" class="college-style"/></a>
+        <a href="college4.jpg" target="winImage"><img src="college4.jpg" alt="College Memory 4" title="Pizza Party" class="college-style"/></a>
+        <a href="college5.jpg" target="winImage"><img src="college5.jpg" alt="College Memory 5" title="Relapse Anyware" class="college-style"/></a>
+        <a href="college6.jpg" target="winImage"><img src="college6.jpg" alt="College Memory 6" title="Are you serious?" class="college-style"/></a>
+        <a href="college7.jpg" target="winImage"><img src="college7.jpg" alt="College Memory 7" title="When will UEMBT win?" class="college-style"/></a>
+        <a href="college8.jpg" target="winImage"><img src="college8.jpg" alt="College Memory 8" title="Stolen Picture" class="college-style"/></a>
+        <a href="college9.jpg" target="winImage"><img src="college9.jpg" alt="College Memory 9" title="Thinking..." class="college-style"/></a>
+        <a href="college10.jpg" target="winImage"><img src="college10.jpg" alt="College Memory 10" title="10 Yen Coin Cheezy" class="college-style"/></a>
+        <a href="college11.jpg" target="winImage"><img src="college11.jpg" alt="College Memory 11" title="Tired at The Library" class="college-style"/></a>
+        <a href="college12.jpg" target="winImage"><img src="college12.jpg" alt="College Memory 12" title="Airport with Big Forehead" class="college-style"/></a>
+        <a href="college13.jpg" target="winImage"><img src="college13.jpg" alt="College Memory 13" title="Three Guys" class="college-style"/></a>
+        <a href="college14.jpg" target="winImage"><img src="college14.jpg" alt="College Memory 14" title="Twinnings" class="college-style"/></a>
+        <a href="college15.jpg" target="winImage"><img src="college15.jpg" alt="College Memory 15" title="Twin" class="college-style"/></a>
+        <a href="college16.jpg" target="winImage"><img src="college16.jpg" alt="College Memory 16" title="Four Man" class="college-style"/></a>
+        <a href="college17.jpg" target="winImage"><img src="college17.jpg" alt="College Memory 17" title="Cryaba and Me" class="college-style"/></a>
+        <a href="college18.jpg" target="winImage"><img src="college18.jpg" alt="College Memory 18" title="Graduation Picture with Rad" class="college-style"/></a>
+        <a href="college19.jpg" target="winImage"><img src="college19.jpg" alt="College Memory 19" title="I am Law" class="college-style"/></a>
+        <a href="college20.jpg" target="winImage"><img src="college20.jpg" alt="College Memory 20" title="Me and my Furpets" class="college-style"/></a>
+    </div>
+</div>
+
+<footer>
+    <a href="#" class="back-to-top">⬆ Back to Top</a><br><br>
+    &copy; 2026 Pierre Espeña | All rights reserved.
+</footer>
+
+</body>
+</html>

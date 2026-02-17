@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Collection - Pierre Espeña</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(
+                    rgba(220, 235, 245, 0.85),
+                    rgba(220, 235, 245, 0.85)
+                );
+            background-color: #eaf4fb;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 30px 0 0 40px;
+            color: #2d5a7a;
+            text-decoration: underline;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #1a3a4f;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: #2d4a5e;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .post-date {
+            font-size: 14px;
+            color: #4a6f8a;
+            font-style: italic;
+        }
+
+        .music-category {
+            border: 2px solid #b7d7ee;
+            padding: 35px;
+            margin: 0 auto 40px;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(150, 190, 220, 0.35);
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-image {
+            width: 100%;
+            max-width: 700px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(150, 190, 220, 0.4);
+        }
+
+        .category-title h2 {
+            color: #2d4a5e;
+            font-size: 32px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .category-subtitle {
+            font-size: 15px;
+            color: #4a6f8a;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .category-description {
+            font-size: 15px;
+            color: #4a6f8a;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 15px auto 0;
+            text-align: justify;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 0 20px;
+        }
+
+        .music-item {
+            background-color: rgba(183, 215, 238, 0.2);
+            border: 2px solid #b7d7ee;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .music-item:hover {
+            background-color: rgba(183, 215, 238, 0.4);
+            box-shadow: 0 5px 15px rgba(150, 190, 220, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .song-cover {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(150, 190, 220, 0.3);
+        }
+
+        .music-item h3 {
+            color: #2d4a5e;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .music-item .artist {
+            color: #4a6f8a;
+            font-size: 14px;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .song-description {
+            color: #4a6f8a;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(183, 215, 238, 0.15);
+            border-radius: 6px;
+            text-align: justify;
+        }
+
+        .music-item audio {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        footer {
+            text-align: center;
+            margin: 80px 0 30px;
+            font-size: 13px;
+            color: #4a6f8a;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 12px 30px;
+            background-color: rgba(45, 90, 122, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(45, 90, 122, 0.3);
+        }
+
+        .back-to-top:hover {
+            background-color: #1a3a4f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(45, 90, 122, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Home</a>
+
+<header>
+    <h1>🎵 Music Collection</h1>
+    <div class="post-date">My Favorite Songs</div>
+</header>
+
+<!-- PINOY-POP CATEGORY -->
+<div class="music-category">
+    <div class="category-header">
+        <img src="pinoy-pop-banner.jpg" alt="Pinoy-Pop Banner" class="category-image">
+        <div class="category-title">
+            <h2>Original Pinoy Music</h2>
+            <div class="category-subtitle">Filipino Music Favorites</div>
+        </div>
+        <div class="category-description">
+            Philippine pop music that captures the heart and soul of Filipino culture. From heartfelt ballads to upbeat contemporary tracks, Pinoy-pop represents the vibrant musical landscape of the Philippines with its unique blend of emotions and storytelling.
+        </div>
+    </div>
+    <div class="music-grid">
+        <div class="music-item">
+            <img src="multo-cover.jpg" alt="Multo by Cup of Joe" class="song-cover">
+            <h3>Multo</h3>
+            <p class="artist">Cup of Joe</p>
+            <div class="song-description">
+                A hauntingly beautiful track about lingering memories and the ghosts of past relationships. Cup of Joe's signature smooth vocals create an emotional atmosphere that resonates with anyone who's experienced love and loss.
+            </div>
+            <audio controls class="audio-player">
+                <source src="pinoy-pop1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="shamrock-alipin-cover.jpg" alt="Shamrock - Alipin by Khel Pangilinan" class="song-cover">
+            <h3>Shamrock - Alipin</h3>
+            <p class="artist">Khel Pangilinan</p>
+            <div class="song-description">
+                An introspective piece exploring themes of devotion and vulnerability in relationships. Khel's soulful delivery and poetic lyrics paint a vivid picture of being willingly captive to love's powerful spell.
+            </div>
+            <audio controls class="audio-player">
+                <source src="pinoy-pop2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="di-na-muli-cover.jpg" alt="Di Na Muli by The Itchyworms" class="song-cover">
+            <h3>Di Na Muli</h3>
+            <p class="artist">The Itchyworms</p>
+            <div class="song-description">
+                A melancholic masterpiece about acceptance and moving forward. This iconic track perfectly captures the bittersweet feeling of letting go, with The Itchyworms' signature indie-rock sound and emotionally charged lyrics.
+            </div>
+            <audio controls class="audio-player">
+                <source src="pinoy-pop3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="sa-susunod-cover.jpg" alt="Sa Susunod na Habang Buhay by Ben & Ben" class="song-cover">
+            <h3>Sa Susunod na Habang Buhay</h3>
+            <p class="artist">Ben & Ben</p>
+            <div class="song-description">
+                A hopeful anthem about second chances and eternal love. Ben & Ben's beautiful harmonies and folk-pop arrangement create a timeless ballad that speaks to the promise of reconnection in another lifetime.
+            </div>
+            <audio controls class="audio-player">
+                <source src="pinoy-pop4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>
+
+<!-- J-POP CATEGORY -->
+<div class="music-category">
+    <div class="category-header">
+        <img src="j-pop-banner.jpg" alt="J-Pop Banner" class="category-image">
+        <div class="category-title">
+            <h2>Japanese Music</h2>
+            <div class="category-subtitle">Japanese Pop Music</div>
+        </div>
+        <div class="category-description">
+            Japanese pop music known for its catchy melodies, creative production, and diverse styles. J-pop blends traditional Japanese musical elements with modern genres, creating a unique and energetic sound that has captivated audiences worldwide.
+        </div>
+    </div>
+    <div class="music-grid">
+        <div class="music-item">
+            <img src="test-me-cover.jpg" alt="Test Me by Chanmina" class="song-cover">
+            <h3>Test Me</h3>
+            <p class="artist">Chanmina</p>
+            <div class="song-description">
+                A bold and confident track showcasing Chanmina's unique hip-hop influenced style. With her powerful rap delivery and catchy hooks, this song challenges listeners with its assertive energy and modern urban sound.
+            </div>
+            <audio controls class="audio-player">
+                <source src="j-pop1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="flyday-chinatown-cover.jpg" alt="Flyday Chinatown by Yasuha" class="song-cover">
+            <h3>Flyday Chinatown</h3>
+            <p class="artist">Yasuha</p>
+            <div class="song-description">
+                An infectious city-pop inspired track that captures the vibrant nightlife atmosphere. With its groovy basslines and retro-modern production, this song transports you to neon-lit streets full of excitement and possibility.
+            </div>
+            <audio controls class="audio-player">
+                <source src="j-pop2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="summertime-cover.jpg" alt="Summertime by Rizky Ayuba" class="song-cover">
+            <h3>Summertime</h3>
+            <p class="artist">Rizky Ayuba</p>
+            <div class="song-description">
+                A breezy, feel-good anthem perfect for warm days and good vibes. The laid-back melody and cheerful production evoke memories of carefree summer days, making it an instant mood-lifter.
+            </div>
+            <audio controls class="audio-player">
+                <source src="j-pop3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="renai-circulation-cover.jpg" alt="Renai Circulation by Kana Hanazawa" class="song-cover">
+            <h3>Renai Circulation</h3>
+            <p class="artist">Kana Hanazawa</p>
+            <div class="song-description">
+                An adorably upbeat love song with an impossibly catchy melody. Known for its cute, bubbly energy and playful lyrics, this anime classic has become a beloved J-pop icon that never fails to bring smiles.
+            </div>
+            <audio controls class="audio-player">
+                <source src="j-pop4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>
+
+<!-- K-POP CATEGORY -->
+<div class="music-category">
+    <div class="category-header">
+        <img src="k-pop-banner.jpg" alt="K-Pop Banner" class="category-image">
+        <div class="category-title">
+            <h2>Korean Music</h2>
+            <div class="category-subtitle">Korean Pop Music</div>
+        </div>
+        <div class="category-description">
+            Korean pop music characterized by addictive melodies, synchronized choreography, and high-quality production. K-pop has taken the world by storm with its perfect blend of catchy hooks, stunning visuals, and diverse musical influences.
+        </div>
+    </div>
+    <div class="music-grid">
+        <div class="music-item">
+            <img src="only-cover.jpg" alt="Only by Lee Hi" class="song-cover">
+            <h3>Only</h3>
+            <p class="artist">Lee Hi</p>
+            <div class="song-description">
+                A soulful R&B ballad showcasing Lee Hi's incredible vocal prowess. The emotional depth and raw vulnerability in her voice create an intimate listening experience about longing and exclusive devotion.
+            </div>
+            <audio controls class="audio-player">
+                <source src="k-pop1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="hskt-cover.jpg" alt="H.S.K.T. by Lee Hi" class="song-cover">
+            <h3>H.S.K.T.</h3>
+            <p class="artist">Lee Hi</p>
+            <div class="song-description">
+                A smooth, sophisticated track that blends R&B with hip-hop elements. Lee Hi delivers effortless cool with her unique vocal color, creating a vibe that's both modern and timeless.
+            </div>
+            <audio controls class="audio-player">
+                <source src="k-pop2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="doughnut-cover.jpg" alt="Doughnut by Twice" class="song-cover">
+            <h3>Doughnut</h3>
+            <p class="artist">Twice</p>
+            <div class="song-description">
+                A sweet and uplifting track with Twice's signature bright energy. The song's warm melody and heartfelt lyrics about cherished moments create a comforting atmosphere that's as delightful as its namesake treat.
+            </div>
+            <audio controls class="audio-player">
+                <source src="k-pop3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="magnetic-cover.jpg" alt="Magnetic by ILLIT" class="song-cover">
+            <h3>Magnetic</h3>
+            <p class="artist">ILLIT</p>
+            <div class="song-description">
+                An irresistibly catchy debut track with fresh, youthful energy. The song's playful production and charming vocals capture the feeling of undeniable attraction, making it instantly memorable and addictive.
+            </div>
+            <audio controls class="audio-player">
+                <source src="k-pop4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>
+
+<!-- INDIE CATEGORY -->
+<div class="music-category">
+    <div class="category-header">
+        <img src="indie-banner.jpg" alt="Indie Banner" class="category-image">
+        <div class="category-title">
+            <h2>Indie Music</h2>
+            <div class="category-subtitle">Independent & Alternative Music</div>
+        </div>
+        <div class="category-description">
+            Independent music that pushes creative boundaries and defies mainstream conventions. Indie tracks offer authentic, experimental sounds that prioritize artistic expression over commercial appeal, creating unique sonic experiences.
+        </div>
+    </div>
+    <div class="music-grid">
+        <div class="music-item">
+            <img src="harvey-cover.jpg" alt="Harvey by Her's" class="song-cover">
+            <h3>Harvey</h3>
+            <p class="artist">Her's</p>
+            <div class="song-description">
+                A dreamy, jangly indie-pop gem with nostalgic vibes. Her's signature lo-fi production and whimsical lyrics create a bittersweet atmosphere that feels like a warm memory from a simpler time.
+            </div>
+            <audio controls class="audio-player">
+                <source src="indie1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="stress-relief-cover.jpg" alt="Stress Relief by late night drive home" class="song-cover">
+            <h3>Stress Relief</h3>
+            <p class="artist">late night drive home</p>
+            <div class="song-description">
+                A calming, atmospheric track perfect for unwinding. The gentle instrumentation and soothing melodies create a peaceful soundscape that lives up to its name, offering a sonic escape from daily pressures.
+            </div>
+            <audio controls class="audio-player">
+                <source src="indie2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="two-time-cover.jpg" alt="Two Time by Jack Stauber's Micropop" class="song-cover">
+            <h3>Two Time</h3>
+            <p class="artist">Jack Stauber's Micropop</p>
+            <div class="song-description">
+                A quirky, experimental track with Jack Stauber's distinctive lo-fi aesthetic. The song's warped vocals and unconventional structure create a surreal, hypnotic experience that's both weird and wonderful.
+            </div>
+            <audio controls class="audio-player">
+                <source src="indie3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-item">
+            <img src="indie4-cover.jpg" alt="Song Cover" class="song-cover">
+            <h3>About You</h3>
+            <p class="artist">The 1975</p>
+            <div class="song-description">
+                A captivating indie track that showcases raw emotion and authentic songwriting. With its honest lyrics and stripped-down instrumentation, this song connects on a deeply personal level.
+            </div>
+            <audio controls class="audio-player">
+                <source src="indie4.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="#" class="back-to-top">⬆ Back to Top</a><br><br>
+    &copy; 2026 Pierre Espeña | All rights reserved.
+</footer>
+
+<script>
+    // Get all audio elements
+    const audioPlayers = document.querySelectorAll('.audio-player');
+
+    // Add event listener to each audio player
+    audioPlayers.forEach(player => {
+        player.addEventListener('play', function() {
+            // Pause all other audio players when one starts playing
+            audioPlayers.forEach(otherPlayer => {
+                if (otherPlayer !== player) {
+                    otherPlayer.pause();
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
