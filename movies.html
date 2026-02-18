@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies - Pierre Espeña</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         html { scroll-behavior: smooth; }
         body {
@@ -35,7 +34,11 @@
             font-family: 'Playfair Display', serif;
             letter-spacing: 0.5px;
         }
-        .post-date { font-size: 14px; color: #4a6f8a; font-style: italic; }
+        .post-date {
+            font-size: 14px;
+            color: #4a6f8a;
+            font-style: italic;
+        }
         .page-nav {
             display: flex;
             justify-content: center;
@@ -60,7 +63,10 @@
             background-color: rgba(255,255,255,0.85);
             color: #2d5a7a;
         }
-        .page-nav a:not(.active):hover { background-color: #b7d7ee; color: #1a3a4f; }
+        .page-nav a:not(.active):hover {
+            background-color: #b7d7ee;
+            color: #1a3a4f;
+        }
         .genre-section {
             border: 2px solid #b7d7ee;
             padding: 35px;
@@ -70,7 +76,10 @@
             border-radius: 18px;
             box-shadow: 0 10px 25px rgba(150,190,220,0.35);
         }
-        .genre-header { text-align: center; margin-bottom: 30px; }
+        .genre-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
         .genre-header h2 {
             color: #2d4a5e;
             font-size: 32px;
@@ -78,8 +87,20 @@
             font-weight: 600;
             margin-bottom: 5px;
         }
-        .genre-subtitle { font-size: 15px; color: #4a6f8a; font-style: italic; margin-bottom: 12px; }
-        .genre-description { font-size: 14px; color: #4a6f8a; line-height: 1.7; max-width: 720px; margin: 0 auto; text-align: justify; }
+        .genre-subtitle {
+            font-size: 15px;
+            color: #4a6f8a;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .genre-description {
+            font-size: 14px;
+            color: #4a6f8a;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: justify;
+        }
         .movie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -98,12 +119,13 @@
             box-shadow: 0 8px 22px rgba(150,190,220,0.5);
             transform: translateY(-4px);
         }
-        .yt-player-wrap {
+        .movie-card video {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16 / 10;
+            display: block;
+            outline: none;
             background: #000;
         }
-        .yt-player-wrap > div { width: 100% !important; height: 100% !important; }
         .badge {
             display: inline-block;
             background: rgba(45,90,122,0.9);
@@ -117,9 +139,25 @@
             margin: 10px 14px 0;
         }
         .movie-info { padding: 10px 16px 16px; }
-        .movie-info h3 { color: #2d4a5e; font-family: 'Playfair Display', serif; font-size: 17px; margin: 0 0 4px; font-weight: 600; }
-        .movie-meta { font-size: 12px; color: #6a9ab8; margin-bottom: 9px; font-style: italic; }
-        .movie-desc { font-size: 12.5px; color: #4a6f8a; line-height: 1.55; text-align: justify; }
+        .movie-info h3 {
+            color: #2d4a5e;
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            margin: 0 0 4px;
+            font-weight: 600;
+        }
+        .movie-meta {
+            font-size: 12px;
+            color: #6a9ab8;
+            margin-bottom: 9px;
+            font-style: italic;
+        }
+        .movie-desc {
+            font-size: 12.5px;
+            color: #4a6f8a;
+            line-height: 1.55;
+            text-align: justify;
+        }
         .movie-rating {
             display: inline-block;
             margin-top: 10px;
@@ -131,7 +169,12 @@
             border-radius: 20px;
             border: 1px solid #b7d7ee;
         }
-        footer { text-align: center; margin: 80px 0 30px; font-size: 13px; color: #4a6f8a; }
+        footer {
+            text-align: center;
+            margin: 80px 0 30px;
+            font-size: 13px;
+            color: #4a6f8a;
+        }
         .back-to-top {
             display: inline-block;
             margin-bottom: 15px;
@@ -145,7 +188,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(45,90,122,0.3);
         }
-        .back-to-top:hover { background-color: #1a3a4f; transform: translateY(-2px); }
+        .back-to-top:hover {
+            background-color: #1a3a4f;
+            transform: translateY(-2px);
+        }
         @media (max-width: 768px) {
             .movie-grid { grid-template-columns: 1fr; }
             header h1 { font-size: 30px; }
@@ -174,8 +220,9 @@
         <p class="genre-description">Action films deliver adrenaline-pumping sequences, jaw-dropping stunts, and relentless pacing that keep audiences on the edge of their seats. From explosive blockbusters to sleek tactical thrillers, the genre celebrates human resilience, physical prowess, and the eternal battle between good and evil.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-EXeTwQWrcwY"></div>
+            <video controls poster="TheDarkKnight.jpg"><source src="TheDarkKnight.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>The Dark Knight</h3>
@@ -184,8 +231,9 @@
                 <span class="movie-rating">&#11088; 9.0 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-hEJnMQG9ev8"></div>
+            <video controls poster="MadMaxFuryRoad.jpg"><source src="MadMaxFuryRoad.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Mad Max: Fury Road</h3>
@@ -194,8 +242,9 @@
                 <span class="movie-rating">&#11088; 8.1 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-2AUmvWgCa0s"></div>
+            <video controls poster="JohnWick.jpg"><source src="JohnWick.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>John Wick</h3>
@@ -204,8 +253,9 @@
                 <span class="movie-rating">&#11088; 7.4 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-qSqVVswa420"></div>
+            <video controls poster="TopGunMaverick.jpg"><source src="TopGunMaverick.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Top Gun: Maverick</h3>
@@ -214,8 +264,9 @@
                 <span class="movie-rating">&#11088; 8.3 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-XiG9n0dGbF0"></div>
+            <video controls poster="MissionImpossibleFallout.jpg"><source src="MissionImpossibleFallout.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Mission: Impossible &ndash; Fallout</h3>
@@ -224,6 +275,7 @@
                 <span class="movie-rating">&#11088; 7.7 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -232,11 +284,12 @@
     <div class="genre-header">
         <h2>&#128514; Comedy</h2>
         <div class="genre-subtitle">Laughter, Wit &amp; Heartfelt Humor</div>
-        <p class="genre-description">Comedy is the art of finding joy, absurdity, and human truth in everyday situations. From sharp satirical wit to slapstick chaos, the best comedies don't just make us laugh — they make us think, feel, and recognize ourselves.</p>
+        <p class="genre-description">Comedy is the art of finding joy, absurdity, and human truth in everyday situations. From sharp satirical wit to slapstick chaos, the best comedies don't just make us laugh — they make us think, feel, and recognize ourselves. These picks stand the test of time through sheer comedic genius.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-1Fg5iWmQjwk"></div>
+            <video controls poster="TheGrandBudapestHotel.jpg"><source src="TheGrandBudapestHotel.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>The Grand Budapest Hotel</h3>
@@ -245,8 +298,9 @@
                 <span class="movie-rating">&#11088; 8.1 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-qGqiHJTsRkQ"></div>
+            <video controls poster="KnivesOut.jpg"><source src="KnivesOut.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Knives Out</h3>
@@ -255,8 +309,9 @@
                 <span class="movie-rating">&#11088; 7.9 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-uMVxkuFo52s"></div>
+            <video controls poster="Superbad.jpg"><source src="Superbad.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Superbad</h3>
@@ -265,6 +320,7 @@
                 <span class="movie-rating">&#11088; 7.6 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -273,11 +329,12 @@
     <div class="genre-header">
         <h2>&#127917; Drama</h2>
         <div class="genre-subtitle">Stories That Stir the Soul</div>
-        <p class="genre-description">Drama explores the full spectrum of human experience — triumph, tragedy, moral conflict, and the quiet moments that define a life. These are the stories that linger long after the credits roll.</p>
+        <p class="genre-description">Drama explores the full spectrum of human experience — triumph, tragedy, moral conflict, and the quiet moments that define a life. The greatest dramatic works force us to confront uncomfortable truths, empathize with strangers, and reflect on who we are. These are the stories that linger long after the credits roll.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-6hB3S9bIaco"></div>
+            <video controls poster="TheShawshankRedemption.jpg"><source src="TheShawshankRedemption.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>The Shawshank Redemption</h3>
@@ -286,8 +343,9 @@
                 <span class="movie-rating">&#11088; 9.3 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-5xH0HfJHsaY"></div>
+            <video controls poster="Parasite.jpg"><source src="Parasite.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Parasite</h3>
@@ -296,8 +354,9 @@
                 <span class="movie-rating">&#11088; 8.5 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-sY1S34973zA"></div>
+            <video controls poster="TheGodfather.jpg"><source src="TheGodfather.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>The Godfather</h3>
@@ -306,6 +365,7 @@
                 <span class="movie-rating">&#11088; 9.2 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -314,11 +374,12 @@
     <div class="genre-header">
         <h2>&#128123; Horror</h2>
         <div class="genre-subtitle">Fear, Dread &amp; the Unknown</div>
-        <p class="genre-description">Horror at its best is about confronting our deepest fears and the darkness lurking beneath the surface of ordinary life. These picks represent horror elevated to genuine art.</p>
+        <p class="genre-description">Horror at its best is not merely about monsters and jump scares — it is about confronting our deepest fears and the darkness lurking beneath the surface of ordinary life. From slow-burn psychological dread to supernatural terror, these picks represent horror elevated to genuine art.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-zljrSOTbP8"></div>
+            <video controls poster="GetOut.jpg"><source src="GetOut.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Get Out</h3>
@@ -327,8 +388,9 @@
                 <span class="movie-rating">&#11088; 7.7 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-V6wWKNij1M"></div>
+            <video controls poster="Hereditary.jpg"><source src="Hereditary.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Hereditary</h3>
@@ -337,8 +399,9 @@
                 <span class="movie-rating">&#11088; 7.3 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-WR7cc5t7tv8"></div>
+            <video controls poster="AQuietPlace.jpg"><source src="AQuietPlace.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>A Quiet Place</h3>
@@ -347,8 +410,9 @@
                 <span class="movie-rating">&#11088; 7.5 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-k10ETZ41q5o"></div>
+            <video controls poster="TheConjuring.jpg"><source src="TheConjuring.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>The Conjuring</h3>
@@ -357,8 +421,9 @@
                 <span class="movie-rating">&#11088; 7.5 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-gVBqNST2aNQ"></div>
+            <video controls poster="Midsommar.jpg"><source src="Midsommar.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Midsommar</h3>
@@ -367,6 +432,7 @@
                 <span class="movie-rating">&#11088; 7.1 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -375,11 +441,12 @@
     <div class="genre-header">
         <h2>&#128640; Science Fiction</h2>
         <div class="genre-subtitle">Beyond the Boundaries of the Known Universe</div>
-        <p class="genre-description">Science fiction uses the fantastical to illuminate the present — exploring humanity's relationship with technology, time, space, and consciousness. These films genuinely expand the imagination.</p>
+        <p class="genre-description">Science fiction at its most ambitious uses the fantastical to illuminate the present — exploring humanity's relationship with technology, time, space, and consciousness. These films genuinely expand the imagination and force us to ask what it means to be human.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-zSWdZVtXT7E"></div>
+            <video controls poster="Interstellar.jpg"><source src="Interstellar.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Interstellar</h3>
@@ -388,8 +455,9 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-8g18jFHCLXk"></div>
+            <video controls poster="DunePartOne.jpg"><source src="DunePartOne.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Dune: Part One</h3>
@@ -398,8 +466,9 @@
                 <span class="movie-rating">&#11088; 8.0 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-tFMo3UJ4B4g"></div>
+            <video controls poster="Arrival.jpg"><source src="Arrival.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Arrival</h3>
@@ -408,8 +477,9 @@
                 <span class="movie-rating">&#11088; 7.9 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-vKQi3bBA1y8"></div>
+            <video controls poster="TheMatrix.jpg"><source src="TheMatrix.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>The Matrix</h3>
@@ -418,6 +488,7 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -426,11 +497,12 @@
     <div class="genre-header">
         <h2>&#128149; Romance</h2>
         <div class="genre-subtitle">Love Stories That Stay With You Forever</div>
-        <p class="genre-description">The best romance films don't just depict love — they make you feel it. These picks remind us why love stories have captivated audiences since the very birth of storytelling.</p>
+        <p class="genre-description">The best romance stories don't just depict love — they make you feel it. Whether sweeping epics or quiet portraits of connection, these films remind us why love stories have captivated audiences since the very birth of storytelling. From heartbreak to euphoria, romance is cinema's most universal language.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-0pdqf4P9MB8"></div>
+            <video controls poster="LaLaLand.jpg"><source src="LaLaLand.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>La La Land</h3>
@@ -439,8 +511,9 @@
                 <span class="movie-rating">&#11088; 8.0 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-1dUkKhFsGZw"></div>
+            <video controls poster="PrideAndPrejudice.jpg"><source src="PrideAndPrejudice.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Pride &amp; Prejudice</h3>
@@ -449,8 +522,9 @@
                 <span class="movie-rating">&#11088; 7.8 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-AzHHPsGCRKo"></div>
+            <video controls poster="EternalSunshineOfTheSpotlessMind.jpg"><source src="EternalSunshineOfTheSpotlessMind.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Eternal Sunshine of the Spotless Mind</h3>
@@ -459,8 +533,9 @@
                 <span class="movie-rating">&#11088; 8.3 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-TA9HkBk2PjA"></div>
+            <video controls poster="BeforeSunrise.jpg"><source src="BeforeSunrise.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Before Sunrise</h3>
@@ -469,6 +544,7 @@
                 <span class="movie-rating">&#11088; 8.1 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -477,11 +553,12 @@
     <div class="genre-header">
         <h2>&#128298; Thriller</h2>
         <div class="genre-subtitle">Suspense, Tension &amp; Devastating Twists</div>
-        <p class="genre-description">Thrillers weaponize atmosphere, pacing, and misdirection to create stories that keep you guessing until the final frame, often revealing something profound about human nature.</p>
+        <p class="genre-description">Thrillers are the art of sustained dread — of knowing something terrible is coming but not when or from where. The finest examples weaponize atmosphere, pacing, and misdirection to create stories that keep you guessing until the final frame, often revealing something profound about human nature.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-2wygDKyEB2I"></div>
+            <video controls poster="GoneGirl.jpg"><source src="GoneGirl.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Gone Girl</h3>
@@ -490,8 +567,9 @@
                 <span class="movie-rating">&#11088; 8.1 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-Uqjc7d4CXVY"></div>
+            <video controls poster="Prisoners.jpg"><source src="Prisoners.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Prisoners</h3>
@@ -500,8 +578,9 @@
                 <span class="movie-rating">&#11088; 8.1 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-j9eOaEiMPpg"></div>
+            <video controls poster="Zodiac.jpg"><source src="Zodiac.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Zodiac</h3>
@@ -510,8 +589,9 @@
                 <span class="movie-rating">&#11088; 7.7 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-38AWT3o0"></div>
+            <video controls poster="NoCountryForOldMen.jpg"><source src="NoCountryForOldMen.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>No Country for Old Men</h3>
@@ -520,6 +600,7 @@
                 <span class="movie-rating">&#11088; 8.2 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -528,11 +609,12 @@
     <div class="genre-header">
         <h2>&#127800; Anime Films</h2>
         <div class="genre-subtitle">Japanese Animation at Its Most Extraordinary</div>
-        <p class="genre-description">Anime films push the boundaries of visual storytelling with breathtaking artistry, emotional depth, and world-building ambition. These are the titles that define the art form at its absolute peak.</p>
+        <p class="genre-description">Anime is a medium without limits — capable of breathtaking visual poetry, complex world-building, raw emotional devastation, and philosophical depth that rivals the greatest works in world literature. These are the films that define the art form at its absolute peak.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-ByXuk9QqQkk"></div>
+            <video controls poster="SpiritedAway.jpg"><source src="SpiritedAway.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Spirited Away</h3>
@@ -541,8 +623,9 @@
                 <span class="movie-rating">&#11088; 8.6 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-xU47nhruXLg"></div>
+            <video controls poster="YourName.jpg"><source src="YourName.mp4" type="video/mp4"></video>
             <span class="badge">Film</span>
             <div class="movie-info">
                 <h3>Your Name <em>(Kimi no Na wa)</em></h3>
@@ -551,6 +634,7 @@
                 <span class="movie-rating">&#11088; 8.4 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -560,63 +644,15 @@
 </footer>
 
 <script>
-    // Map of element-id suffix -> actual YouTube video ID
-    var videos = {
-        'EXeTwQWrcwY': 'EXeTwQWrcwY',
-        'hEJnMQG9ev8': 'hEJnMQG9ev8',
-        '2AUmvWgCa0s': '2AUmvWgCa0s',
-        'qSqVVswa420': 'qSqVVswa420',
-        'XiG9n0dGbF0': 'XiG9n0dGbF0',
-        '1Fg5iWmQjwk': '1Fg5iWmQjwk',
-        'qGqiHJTsRkQ': 'qGqiHJTsRkQ',
-        'uMVxkuFo52s': 'uMVxkuFo52s',
-        '6hB3S9bIaco': '6hB3S9bIaco',
-        '5xH0HfJHsaY': '5xH0HfJHsaY',
-        'sY1S34973zA': 'sY1S34973zA',
-        'zljrSOTbP8':  'zljrS-OTbP8',
-        'V6wWKNij1M':  'V6wWKNij_1M',
-        'WR7cc5t7tv8': 'WR7cc5t7tv8',
-        'k10ETZ41q5o': 'k10ETZ41q5o',
-        'gVBqNST2aNQ': 'gVBqNST2aNQ',
-        'zSWdZVtXT7E': 'zSWdZVtXT7E',
-        '8g18jFHCLXk': '8g18jFHCLXk',
-        'tFMo3UJ4B4g': 'tFMo3UJ4B4g',
-        'vKQi3bBA1y8': 'vKQi3bBA1y8',
-        '0pdqf4P9MB8': '0pdqf4P9MB8',
-        '1dUkKhFsGZw': '1dUkKhFsGZw',
-        'AzHHPsGCRKo': 'AzHHPsGCRKo',
-        'TA9HkBk2PjA': 'TA9HkBk2PjA',
-        '2wygDKyEB2I': '2wygDKyEB2I',
-        'Uqjc7d4CXVY': 'Uqjc7d4CXVY',
-        'j9eOaEiMPpg': 'j9eOaEiMPpg',
-        '38AWT3o0':    '38A__WT3-o0',
-        'ByXuk9QqQkk': 'ByXuk9QqQkk',
-        'xU47nhruXLg': 'xU47nhruXLg'
-    };
-
-    var players = {};
-
-    function onYouTubeIframeAPIReady() {
-        Object.keys(videos).forEach(function(key) {
-            var el = document.getElementById('p-' + key);
-            if (!el) return;
-            players[key] = new YT.Player('p-' + key, {
-                videoId: videos[key],
-                playerVars: { rel: 0, modestbranding: 1 },
-                events: {
-                    onStateChange: function(e) {
-                        if (e.data === YT.PlayerState.PLAYING) {
-                            Object.keys(players).forEach(function(k) {
-                                if (k !== key && players[k] && players[k].getPlayerState() === YT.PlayerState.PLAYING) {
-                                    players[k].pauseVideo();
-                                }
-                            });
-                        }
-                    }
-                }
+    const videos = document.querySelectorAll('video');
+    videos.forEach(function(video) {
+        video.addEventListener('play', function() {
+            videos.forEach(function(other) {
+                if (other !== video) other.pause();
             });
         });
-    }
+    });
 </script>
+
 </body>
 </html>
