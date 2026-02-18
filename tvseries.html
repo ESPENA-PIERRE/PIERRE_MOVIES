@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series - Pierre Espeña</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #eaf4fb;
+            background: linear-gradient(rgba(220,235,245,0.85), rgba(220,235,245,0.85));
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 30px 0 0 40px;
+            color: #2d5a7a;
+            text-decoration: underline;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover { color: #1a3a4f; }
+        header {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            color: #2d4a5e;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+        .post-date {
+            font-size: 14px;
+            color: #4a6f8a;
+            font-style: italic;
+        }
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .page-nav a {
+            padding: 10px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #b7d7ee;
+        }
+        .page-nav a.active {
+            background-color: rgba(90,45,122,0.9);
+            color: white;
+            border-color: rgba(90,45,122,0.9);
+        }
+        .page-nav a:not(.active) {
+            background-color: rgba(255,255,255,0.85);
+            color: #2d5a7a;
+        }
+        .page-nav a:not(.active):hover {
+            background-color: #b7d7ee;
+            color: #1a3a4f;
+        }
+        .genre-section {
+            border: 2px solid #b7d7ee;
+            padding: 35px;
+            margin: 0 auto 40px;
+            max-width: 1000px;
+            background-color: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(150,190,220,0.35);
+        }
+        .genre-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .genre-header h2 {
+            color: #2d4a5e;
+            font-size: 32px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .genre-subtitle {
+            font-size: 15px;
+            color: #4a6f8a;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .genre-description {
+            font-size: 14px;
+            color: #4a6f8a;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-top: 28px;
+        }
+        .movie-card {
+            background-color: rgba(183,215,238,0.2);
+            border: 2px solid #b7d7ee;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .movie-card:hover {
+            background-color: rgba(183,215,238,0.45);
+            box-shadow: 0 8px 22px rgba(150,190,220,0.5);
+            transform: translateY(-4px);
+        }
+        .embed-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: block;
+            background: #000;
+        }
+        .embed-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(90,45,122,0.9);
+            color: white;
+            font-size: 10px;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 10px 14px 0;
+        }
+        .movie-info { padding: 10px 16px 16px; }
+        .movie-info h3 {
+            color: #2d4a5e;
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            margin: 0 0 4px;
+            font-weight: 600;
+        }
+        .movie-meta {
+            font-size: 12px;
+            color: #6a9ab8;
+            margin-bottom: 9px;
+            font-style: italic;
+        }
+        .movie-desc {
+            font-size: 12.5px;
+            color: #4a6f8a;
+            line-height: 1.55;
+            text-align: justify;
+        }
+        .movie-rating {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #2d5a7a;
+            background: rgba(183,215,238,0.4);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid #b7d7ee;
+        }
+        footer {
+            text-align: center;
+            margin: 80px 0 30px;
+            font-size: 13px;
+            color: #4a6f8a;
+        }
+        .back-to-top {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 12px 30px;
+            background-color: rgba(45,90,122,0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(45,90,122,0.3);
+        }
+        .back-to-top:hover {
+            background-color: #1a3a4f;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .movie-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 30px; }
+            .page-nav { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">&#8592; Back to Home</a>
+<header>
+    <h1>&#128250; TV Series</h1>
+    <div class="post-date">Top Rated Series Picks Across Every Genre</div>
+</header>
+
+<div class="page-nav">
+    <a href="movies.html">🎬 Movies</a>
+    <a href="tvseries.html" class="active">📺 TV Series</a>
+</div>
+
+<!-- ACTION -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#128165; Action</h2>
+        <div class="genre-subtitle">High-Octane Thrills &amp; Explosive Sequences</div>
+        <p class="genre-description">Action TV series deliver relentless tension, jaw-dropping set pieces, and the kind of sustained storytelling that movies can't match. These picks represent the very best the genre has to offer across streaming and broadcast television.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/M1bhOaLV4FU" title="The Boys Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>The Boys</h3>
+                <div class="movie-meta">2019&ndash; &middot; Amazon Prime</div>
+                <div class="movie-desc">A savage, darkly comedic deconstruction of superhero culture. Provocative, brilliantly written, and one of the most discussed shows on streaming.</div>
+                <span class="movie-rating">&#11088; 8.7 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- COMEDY -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#128514; Comedy</h2>
+        <div class="genre-subtitle">Laughter, Wit &amp; Heartfelt Humor</div>
+        <p class="genre-description">Comedy series have the unique power to build characters and worlds over many episodes, turning laughs into something deeper. These picks represent the pinnacle of comedic television — endlessly rewatchable and genuinely moving.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/HhkLMPMQcxI" title="What We Do in the Shadows Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>What We Do in the Shadows</h3>
+                <div class="movie-meta">2019&ndash; &middot; FX</div>
+                <div class="movie-desc">Vampire roommates navigate modern Staten Island in this Emmy-recognized mockumentary masterwork by Taika Waititi.</div>
+                <span class="movie-rating">&#11088; 8.6 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/hDTROqp9aFc" title="Schitt's Creek Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Schitt's Creek</h3>
+                <div class="movie-meta">2015&ndash;2020 &middot; CBC / Pop TV</div>
+                <div class="movie-desc">A wealthy family loses everything and moves to a small town. Heartwarming, hilarious, and swept 9 Emmy Awards in 2020.</div>
+                <span class="movie-rating">&#11088; 8.5 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/LzDMH3K0ous" title="The Office Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>The Office (US)</h3>
+                <div class="movie-meta">2005&ndash;2013 &middot; NBC</div>
+                <div class="movie-desc">The most endlessly rewatchable sitcom ever made. Steve Carell leads one of the most beloved ensemble casts in television history.</div>
+                <span class="movie-rating">&#11088; 9.0 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DRAMA -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#127917; Drama</h2>
+        <div class="genre-subtitle">Stories That Stir the Soul</div>
+        <p class="genre-description">Drama series allow stories to breathe and evolve in ways no film can. The greatest dramatic series transform characters over years, leaving viewers forever changed. These picks represent television drama at its absolute zenith.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/HhKTkEtjME4" title="Breaking Bad Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Breaking Bad</h3>
+                <div class="movie-meta">2008&ndash;2013 &middot; AMC</div>
+                <div class="movie-desc">A chemistry teacher transforms into a ruthless drug kingpin. Widely considered the greatest television drama ever made. Bryan Cranston won 4 Emmys.</div>
+                <span class="movie-rating">&#11088; 9.5 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/OKnJPB8h7MQ" title="Succession Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Succession</h3>
+                <div class="movie-meta">2018&ndash;2023 &middot; HBO</div>
+                <div class="movie-desc">A modern King Lear — savage, funny, and devastating. Won 5 consecutive Emmy Awards for Outstanding Drama Series.</div>
+                <span class="movie-rating">&#11088; 8.8 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/s9APLXM9Ei8" title="Chernobyl Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Chernobyl</h3>
+                <div class="movie-meta">2019 &middot; HBO Miniseries</div>
+                <div class="movie-desc">A haunting, meticulous portrait of institutional failure and individual heroism. Won 10 Emmy Awards and holds a 96% on Rotten Tomatoes.</div>
+                <span class="movie-rating">&#11088; 9.4 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HORROR -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#128123; Horror</h2>
+        <div class="genre-subtitle">Fear, Dread &amp; the Unknown</div>
+        <p class="genre-description">Horror TV series can sustain dread across episodes in ways films cannot — building atmosphere slowly, making you care deeply about characters before putting them in danger. These picks represent the finest horror television ever produced.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/4mBam5PFEdo" title="The Haunting of Hill House Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>The Haunting of Hill House</h3>
+                <div class="movie-meta">2018 &middot; Netflix</div>
+                <div class="movie-desc">The finest horror series ever made. Far more than a ghost story — a devastating meditation on grief, trauma, and unbreakable family bonds.</div>
+                <span class="movie-rating">&#11088; 8.6 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCI-FI -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#128640; Science Fiction</h2>
+        <div class="genre-subtitle">Beyond the Boundaries of the Known Universe</div>
+        <p class="genre-description">Sci-fi television has exploded in ambition and quality, delivering concepts and worlds that rival the finest literature. These series push what TV can achieve — intellectually, visually, and emotionally.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/jNev8W4FJNE" title="Black Mirror Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Black Mirror</h3>
+                <div class="movie-meta">2011&ndash; &middot; Netflix</div>
+                <div class="movie-desc">Dark anthology satires of modern technology — each episode a self-contained film. Some of TV's most unsettling and prescient stories ever told.</div>
+                <span class="movie-rating">&#11088; 8.7 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/xLGKVBnUTMY" title="Severance Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Severance</h3>
+                <div class="movie-meta">2022&ndash; &middot; Apple TV+</div>
+                <div class="movie-desc">Workers surgically sever their work and personal memories. One of the most original concepts in recent television — a darkly comic sci-fi thriller with suffocating dread.</div>
+                <span class="movie-rating">&#11088; 8.7 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ROMANCE -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#128149; Romance</h2>
+        <div class="genre-subtitle">Love Stories That Stay With You Forever</div>
+        <p class="genre-description">Romance series have the luxury of time — slowly building chemistry, tension, and connection in ways that make falling in love feel real. These picks deliver love stories that are honest, raw, and genuinely affecting.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/IzLKuMSMPzs" title="Normal People Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Normal People</h3>
+                <div class="movie-meta">2020 &middot; Hulu / BBC Three</div>
+                <div class="movie-desc">Based on Sally Rooney's novel. Celebrated for emotional honesty, nuanced performances by Paul Mescal and Daisy Edgar-Jones, and its frank depiction of intimacy.</div>
+                <span class="movie-rating">&#11088; 8.2 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/ydnHNH3uxqA" title="Fleabag Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Fleabag</h3>
+                <div class="movie-meta">2016&ndash;2019 &middot; BBC Three / Amazon</div>
+                <div class="movie-desc">Phoebe Waller-Bridge's one-of-a-kind masterwork — hilarious, heartbreaking, and revolutionary. Won 6 Emmy Awards. One of TV's most singular achievements.</div>
+                <span class="movie-rating">&#11088; 8.7 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- THRILLER -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#128298; Thriller</h2>
+        <div class="genre-subtitle">Suspense, Tension &amp; Devastating Twists</div>
+        <p class="genre-description">Thriller series sustain dread across entire seasons, building layers of tension and misdirection that keep you hooked episode after episode. These picks are some of the most gripping hours of television ever produced.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/dTnpJnqnk3I" title="True Detective Season 1 Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>True Detective Season 1</h3>
+                <div class="movie-meta">2014 &middot; HBO</div>
+                <div class="movie-desc">McConaughey's Rust Cohle is among the most philosophically compelling characters in TV history. HBO's anthology hit a once-in-a-generation high in its first season.</div>
+                <span class="movie-rating">&#11088; 9.0 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/lGqP5lWqlYI" title="Mindhunter Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Mindhunter</h3>
+                <div class="movie-meta">2017&ndash;2019 &middot; Netflix</div>
+                <div class="movie-desc">FBI agents interview serial killers in the 1970s. David Fincher's methodical direction creates a uniquely cold, hypnotic experience that changed how we think about crime storytelling.</div>
+                <span class="movie-rating">&#11088; 8.6 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ANIME SERIES -->
+<div class="genre-section">
+    <div class="genre-header">
+        <h2>&#127800; Anime Series</h2>
+        <div class="genre-subtitle">Japanese Animation at Its Most Extraordinary</div>
+        <p class="genre-description">Anime series push the boundaries of visual storytelling with their sheer scope, emotional depth, and world-building ambition. These are the titles that define the art form at its absolute peak — series that have captivated audiences worldwide.</p>
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/MGRm4IzK1SQ" title="Attack on Titan Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Attack on Titan</h3>
+                <div class="movie-meta">2013&ndash;2023 &middot; MBS / NHK</div>
+                <div class="movie-desc">One of the most acclaimed anime series ever made. Celebrated for its morally complex storytelling, shocking twists, and devastating emotional impact across every arc.</div>
+                <span class="movie-rating">&#11088; 9.0 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/VQGCKyvzIM4" title="Demon Slayer Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Demon Slayer</h3>
+                <div class="movie-meta">2019&ndash; &middot; Fuji TV</div>
+                <div class="movie-desc">A global phenomenon thanks to Ufotable's breathtaking animation. The Mugen Train film is the highest-grossing Japanese film in history.</div>
+                <span class="movie-rating">&#11088; 8.7 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/--IcmZkvL0Q" title="Fullmetal Alchemist Brotherhood Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Fullmetal Alchemist: Brotherhood</h3>
+                <div class="movie-meta">2009&ndash;2010 &middot; MBS</div>
+                <div class="movie-desc">Regarded by many as the greatest anime series ever made — perfectly paced, emotionally devastating, with one of the most satisfying conclusions in the entire medium.</div>
+                <span class="movie-rating">&#11088; 9.1 / 10</span>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="embed-wrapper">
+                <iframe src="https://www.youtube.com/embed/NlJZ-YgAt-c" title="Death Note Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <span class="badge">TV</span>
+            <div class="movie-info">
+                <h3>Death Note</h3>
+                <div class="movie-meta">2006&ndash;2007 &middot; NTV</div>
+                <div class="movie-desc">The most gripping cat-and-mouse psychological duel in anime history. A gateway series that redefined the medium for an entire generation of fans worldwide.</div>
+                <span class="movie-rating">&#11088; 9.0 / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <a href="#" class="back-to-top">&#11014; Back to Top</a><br><br>
+    &copy; 2026 Pierre Espe&ntilde;a | All rights reserved.
+</footer>
+
+</body>
+</html>
