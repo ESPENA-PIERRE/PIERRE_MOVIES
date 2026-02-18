@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV Series - Pierre Espeña</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         html { scroll-behavior: smooth; }
         body {
@@ -35,7 +34,11 @@
             font-family: 'Playfair Display', serif;
             letter-spacing: 0.5px;
         }
-        .post-date { font-size: 14px; color: #4a6f8a; font-style: italic; }
+        .post-date {
+            font-size: 14px;
+            color: #4a6f8a;
+            font-style: italic;
+        }
         .page-nav {
             display: flex;
             justify-content: center;
@@ -60,7 +63,10 @@
             background-color: rgba(255,255,255,0.85);
             color: #2d5a7a;
         }
-        .page-nav a:not(.active):hover { background-color: #b7d7ee; color: #1a3a4f; }
+        .page-nav a:not(.active):hover {
+            background-color: #b7d7ee;
+            color: #1a3a4f;
+        }
         .genre-section {
             border: 2px solid #b7d7ee;
             padding: 35px;
@@ -70,7 +76,10 @@
             border-radius: 18px;
             box-shadow: 0 10px 25px rgba(150,190,220,0.35);
         }
-        .genre-header { text-align: center; margin-bottom: 30px; }
+        .genre-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
         .genre-header h2 {
             color: #2d4a5e;
             font-size: 32px;
@@ -78,8 +87,20 @@
             font-weight: 600;
             margin-bottom: 5px;
         }
-        .genre-subtitle { font-size: 15px; color: #4a6f8a; font-style: italic; margin-bottom: 12px; }
-        .genre-description { font-size: 14px; color: #4a6f8a; line-height: 1.7; max-width: 720px; margin: 0 auto; text-align: justify; }
+        .genre-subtitle {
+            font-size: 15px;
+            color: #4a6f8a;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .genre-description {
+            font-size: 14px;
+            color: #4a6f8a;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: justify;
+        }
         .movie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -98,12 +119,13 @@
             box-shadow: 0 8px 22px rgba(150,190,220,0.5);
             transform: translateY(-4px);
         }
-        .yt-player-wrap {
+        .movie-card video {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16 / 10;
+            display: block;
+            outline: none;
             background: #000;
         }
-        .yt-player-wrap > div { width: 100% !important; height: 100% !important; }
         .badge {
             display: inline-block;
             background: rgba(90,45,122,0.9);
@@ -117,9 +139,25 @@
             margin: 10px 14px 0;
         }
         .movie-info { padding: 10px 16px 16px; }
-        .movie-info h3 { color: #2d4a5e; font-family: 'Playfair Display', serif; font-size: 17px; margin: 0 0 4px; font-weight: 600; }
-        .movie-meta { font-size: 12px; color: #6a9ab8; margin-bottom: 9px; font-style: italic; }
-        .movie-desc { font-size: 12.5px; color: #4a6f8a; line-height: 1.55; text-align: justify; }
+        .movie-info h3 {
+            color: #2d4a5e;
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            margin: 0 0 4px;
+            font-weight: 600;
+        }
+        .movie-meta {
+            font-size: 12px;
+            color: #6a9ab8;
+            margin-bottom: 9px;
+            font-style: italic;
+        }
+        .movie-desc {
+            font-size: 12.5px;
+            color: #4a6f8a;
+            line-height: 1.55;
+            text-align: justify;
+        }
         .movie-rating {
             display: inline-block;
             margin-top: 10px;
@@ -131,7 +169,12 @@
             border-radius: 20px;
             border: 1px solid #b7d7ee;
         }
-        footer { text-align: center; margin: 80px 0 30px; font-size: 13px; color: #4a6f8a; }
+        footer {
+            text-align: center;
+            margin: 80px 0 30px;
+            font-size: 13px;
+            color: #4a6f8a;
+        }
         .back-to-top {
             display: inline-block;
             margin-bottom: 15px;
@@ -145,7 +188,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(45,90,122,0.3);
         }
-        .back-to-top:hover { background-color: #1a3a4f; transform: translateY(-2px); }
+        .back-to-top:hover {
+            background-color: #1a3a4f;
+            transform: translateY(-2px);
+        }
         @media (max-width: 768px) {
             .movie-grid { grid-template-columns: 1fr; }
             header h1 { font-size: 30px; }
@@ -174,8 +220,9 @@
         <p class="genre-description">Action TV series deliver relentless tension, jaw-dropping set pieces, and the kind of sustained storytelling that movies can't match. These picks represent the very best the genre has to offer across streaming and broadcast television.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-M1bhOaLV4FU"></div>
+            <video controls poster="TheBoys.jpg"><source src="TheBoys.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>The Boys</h3>
@@ -184,6 +231,7 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -192,11 +240,12 @@
     <div class="genre-header">
         <h2>&#128514; Comedy</h2>
         <div class="genre-subtitle">Laughter, Wit &amp; Heartfelt Humor</div>
-        <p class="genre-description">Comedy series build characters and worlds over many episodes, turning laughs into something deeper. These picks represent the pinnacle of comedic television — endlessly rewatchable and genuinely moving.</p>
+        <p class="genre-description">Comedy series have the unique power to build characters and worlds over many episodes, turning laughs into something deeper. These picks represent the pinnacle of comedic television — endlessly rewatchable and genuinely moving.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-HhkLMPMQcxI"></div>
+            <video controls poster="WhatWeDoInTheShadows.jpg"><source src="WhatWeDoInTheShadows.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>What We Do in the Shadows</h3>
@@ -205,8 +254,9 @@
                 <span class="movie-rating">&#11088; 8.6 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-hDTROqp9aFc"></div>
+            <video controls poster="SchittsCreek.jpg"><source src="SchittsCreek.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Schitt's Creek</h3>
@@ -215,8 +265,9 @@
                 <span class="movie-rating">&#11088; 8.5 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-LzDMH3K0ous"></div>
+            <video controls poster="TheOffice.jpg"><source src="TheOffice.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>The Office (US)</h3>
@@ -225,6 +276,7 @@
                 <span class="movie-rating">&#11088; 9.0 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -236,8 +288,9 @@
         <p class="genre-description">Drama series allow stories to breathe and evolve in ways no film can. The greatest dramatic series transform characters over years, leaving viewers forever changed. These picks represent television drama at its absolute zenith.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-HhKTkEtjME4"></div>
+            <video controls poster="BreakingBad.jpg"><source src="BreakingBad.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Breaking Bad</h3>
@@ -246,8 +299,9 @@
                 <span class="movie-rating">&#11088; 9.5 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-OKnJPB8h7MQ"></div>
+            <video controls poster="Succession.jpg"><source src="Succession.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Succession</h3>
@@ -256,8 +310,9 @@
                 <span class="movie-rating">&#11088; 8.8 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-s9APLXM9Ei8"></div>
+            <video controls poster="Chernobyl.jpg"><source src="Chernobyl.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Chernobyl</h3>
@@ -266,6 +321,7 @@
                 <span class="movie-rating">&#11088; 9.4 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -274,11 +330,12 @@
     <div class="genre-header">
         <h2>&#128123; Horror</h2>
         <div class="genre-subtitle">Fear, Dread &amp; the Unknown</div>
-        <p class="genre-description">Horror TV series can sustain dread across episodes in ways films cannot — building atmosphere slowly, making you care deeply about characters before putting them in danger.</p>
+        <p class="genre-description">Horror TV series can sustain dread across episodes in ways films cannot — building atmosphere slowly, making you care deeply about characters before putting them in danger. These picks represent the finest horror television ever produced.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-4mBam5PFEdo"></div>
+            <video controls poster="TheHauntingOfHillHouse.jpg"><source src="TheHauntingOfHillHouse.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>The Haunting of Hill House</h3>
@@ -287,6 +344,7 @@
                 <span class="movie-rating">&#11088; 8.6 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -298,8 +356,9 @@
         <p class="genre-description">Sci-fi television has exploded in ambition and quality, delivering concepts and worlds that rival the finest literature. These series push what TV can achieve — intellectually, visually, and emotionally.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-jNev8W4FJNE"></div>
+            <video controls poster="BlackMirror.jpg"><source src="BlackMirror.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Black Mirror</h3>
@@ -308,8 +367,9 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-xLGKVBnUTMY"></div>
+            <video controls poster="Severance.jpg"><source src="Severance.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Severance</h3>
@@ -318,6 +378,7 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -329,8 +390,9 @@
         <p class="genre-description">Romance series have the luxury of time — slowly building chemistry, tension, and connection in ways that make falling in love feel real. These picks deliver love stories that are honest, raw, and genuinely affecting.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-IzLKuMSMPzs"></div>
+            <video controls poster="NormalPeople.jpg"><source src="NormalPeople.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Normal People</h3>
@@ -339,8 +401,9 @@
                 <span class="movie-rating">&#11088; 8.2 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-ydnHNH3uxqA"></div>
+            <video controls poster="Fleabag.jpg"><source src="Fleabag.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Fleabag</h3>
@@ -349,6 +412,7 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -357,11 +421,12 @@
     <div class="genre-header">
         <h2>&#128298; Thriller</h2>
         <div class="genre-subtitle">Suspense, Tension &amp; Devastating Twists</div>
-        <p class="genre-description">Thriller series sustain dread across entire seasons, building layers of tension and misdirection that keep you hooked episode after episode.</p>
+        <p class="genre-description">Thriller series sustain dread across entire seasons, building layers of tension and misdirection that keep you hooked episode after episode. These picks are some of the most gripping hours of television ever produced.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-dTnpJnqnk3I"></div>
+            <video controls poster="TrueDetectiveSeason1.jpg"><source src="TrueDetectiveSeason1.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>True Detective Season 1</h3>
@@ -370,8 +435,9 @@
                 <span class="movie-rating">&#11088; 9.0 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-lGqP5lWqlYI"></div>
+            <video controls poster="Mindhunter.jpg"><source src="Mindhunter.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Mindhunter</h3>
@@ -380,6 +446,7 @@
                 <span class="movie-rating">&#11088; 8.6 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -388,11 +455,12 @@
     <div class="genre-header">
         <h2>&#127800; Anime Series</h2>
         <div class="genre-subtitle">Japanese Animation at Its Most Extraordinary</div>
-        <p class="genre-description">Anime series push the boundaries of visual storytelling with sheer scope, emotional depth, and world-building ambition. These are the titles that have captivated audiences worldwide and define the art form at its absolute peak.</p>
+        <p class="genre-description">Anime is a medium without limits — capable of breathtaking visual poetry, complex world-building, raw emotional devastation, and philosophical depth that rivals the greatest works in world literature. These are the series that define the art form at its absolute peak.</p>
     </div>
     <div class="movie-grid">
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-MGRm4IzK1SQ"></div>
+            <video controls poster="AttackOnTitan.jpg"><source src="AttackOnTitan.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Attack on Titan</h3>
@@ -401,8 +469,9 @@
                 <span class="movie-rating">&#11088; 9.0 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-VQGCKyvzIM4"></div>
+            <video controls poster="DemonSlayer.jpg"><source src="DemonSlayer.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Demon Slayer</h3>
@@ -411,8 +480,9 @@
                 <span class="movie-rating">&#11088; 8.7 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-IcmZkvL0Q"></div>
+            <video controls poster="FullmetalAlchemistBrotherhood.jpg"><source src="FullmetalAlchemistBrotherhood.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Fullmetal Alchemist: Brotherhood</h3>
@@ -421,8 +491,9 @@
                 <span class="movie-rating">&#11088; 9.1 / 10</span>
             </div>
         </div>
+
         <div class="movie-card">
-            <div class="yt-player-wrap" id="p-NlJZ-YgAt-c"></div>
+            <video controls poster="DeathNote.jpg"><source src="DeathNote.mp4" type="video/mp4"></video>
             <span class="badge">TV</span>
             <div class="movie-info">
                 <h3>Death Note</h3>
@@ -431,6 +502,7 @@
                 <span class="movie-rating">&#11088; 9.0 / 10</span>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -440,50 +512,15 @@
 </footer>
 
 <script>
-    var videos = {
-        'M1bhOaLV4FU': 'M1bhOaLV4FU',
-        'HhkLMPMQcxI': 'HhkLMPMQcxI',
-        'hDTROqp9aFc': 'hDTROqp9aFc',
-        'LzDMH3K0ous': 'LzDMH3K0ous',
-        'HhKTkEtjME4': 'HhKTkEtjME4',
-        'OKnJPB8h7MQ': 'OKnJPB8h7MQ',
-        's9APLXM9Ei8': 's9APLXM9Ei8',
-        '4mBam5PFEdo': '4mBam5PFEdo',
-        'jNev8W4FJNE': 'jNev8W4FJNE',
-        'xLGKVBnUTMY': 'xLGKVBnUTMY',
-        'IzLKuMSMPzs': 'IzLKuMSMPzs',
-        'ydnHNH3uxqA': 'ydnHNH3uxqA',
-        'dTnpJnqnk3I': 'dTnpJnqnk3I',
-        'lGqP5lWqlYI': 'lGqP5lWqlYI',
-        'MGRm4IzK1SQ': 'MGRm4IzK1SQ',
-        'VQGCKyvzIM4': 'VQGCKyvzIM4',
-        'IcmZkvL0Q':   '--IcmZkvL0Q',
-        'NlJZ-YgAt-c': 'NlJZ-YgAt-c'
-    };
-
-    var players = {};
-
-    function onYouTubeIframeAPIReady() {
-        Object.keys(videos).forEach(function(key) {
-            var el = document.getElementById('p-' + key);
-            if (!el) return;
-            players[key] = new YT.Player('p-' + key, {
-                videoId: videos[key],
-                playerVars: { rel: 0, modestbranding: 1 },
-                events: {
-                    onStateChange: function(e) {
-                        if (e.data === YT.PlayerState.PLAYING) {
-                            Object.keys(players).forEach(function(k) {
-                                if (k !== key && players[k] && players[k].getPlayerState() === YT.PlayerState.PLAYING) {
-                                    players[k].pauseVideo();
-                                }
-                            });
-                        }
-                    }
-                }
+    const videos = document.querySelectorAll('video');
+    videos.forEach(function(video) {
+        video.addEventListener('play', function() {
+            videos.forEach(function(other) {
+                if (other !== video) other.pause();
             });
         });
-    }
+    });
 </script>
+
 </body>
 </html>
